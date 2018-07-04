@@ -1,35 +1,40 @@
-import React, { PureComponent } from 'react'
-import { BackHandler, Animated, Easing } from 'react-native'
+import React, { PureComponent } from 'react';
+import { BackHandler, Animated, Easing } from 'react-native';
 import {
   createStackNavigator,
   createBottomTabNavigator,
   NavigationActions,
-} from 'react-navigation'
+} from 'react-navigation';
 import {
   reduxifyNavigator,
   createReactNavigationReduxMiddleware,
   createNavigationReducer,
-} from 'react-navigation-redux-helpers'
-import { connect } from 'react-redux'
+} from 'react-navigation-redux-helpers';
+import { connect } from 'react-redux';
 
-import Loading from './containers/Loading'
-import Login from './containers/Login'
-import Home from './containers/Home'
-import Account from './containers/Account'
-import Detail from './containers/Detail'
+import Loading from './containers/Loading';
+import Login from './containers/Login';
+import Home from './containers/Home';
+import Account from './containers/Account';
+import Detail from './containers/Detail';
 
 const HomeNavigator = createBottomTabNavigator({
   Home: { screen: Home },
   Account: { screen: Account },
-})
+});
 
 HomeNavigator.navigationOptions = ({ navigation }) => {
   const { routeName } = navigation.state.routes[navigation.state.index]
-
-  return {
-    headerTitle: routeName,
+  if (routeName === 'Home') {
+    return {
+      header: null,
+    };
+  } else {
+    return {
+      headerTitle: routeName,
+    };
   }
-}
+};
 
 const MainNavigator = createStackNavigator(
   {
@@ -39,7 +44,7 @@ const MainNavigator = createStackNavigator(
   {
     headerMode: 'float',
   }
-)
+);
 
 const AppNavigator = createStackNavigator(
   {
@@ -58,76 +63,76 @@ const AppNavigator = createStackNavigator(
         easing: Easing.out(Easing.poly(4)),
         timing: Animated.timing,
       },
-      screenInterpolator: sceneProps => {
+      screenInterpolator: (sceneProps) => {
         const { layout, position, scene } = sceneProps
-        const { index } = scene
+        const { index } = scene;
 
-        const height = layout.initHeight
+        const height = layout.initHeight;
         const translateY = position.interpolate({
           inputRange: [index - 1, index, index + 1],
           outputRange: [height, 0, 0],
-        })
+        });
 
         const opacity = position.interpolate({
           inputRange: [index - 1, index - 0.99, index],
           outputRange: [0, 1, 1],
-        })
+        });
 
-        return { opacity, transform: [{ translateY }] }
+        return { opacity, transform: [{ translateY }] };
       },
     }),
   }
-)
+);
 
-export const routerReducer = createNavigationReducer(AppNavigator)
+export const routerReducer = createNavigationReducer(AppNavigator);
 
 export const routerMiddleware = createReactNavigationReduxMiddleware(
   'root',
   state => state.router
-)
+);
 
-const App = reduxifyNavigator(AppNavigator, 'root')
+const App = reduxifyNavigator(AppNavigator, 'root');
 
 function getActiveRouteName(navigationState) {
   if (!navigationState) {
-    return null
+    return null;
   }
   const route = navigationState.routes[navigationState.index]
   if (route.routes) {
-    return getActiveRouteName(route)
+    return getActiveRouteName(route);
   }
-  return route.routeName
+  return route.routeName;
 }
 
 @connect(({ app, router }) => ({ app, router }))
 class Router extends PureComponent {
   componentWillMount() {
     // 监听设备上的后退按钮事件(主要是安卓)。    ios:尚无作用
-    BackHandler.addEventListener('hardwareBackPress', this.backHandle)
+    BackHandler.addEventListener('hardwareBackPress', this.backHandle);
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.backHandle)
+    BackHandler.removeEventListener('hardwareBackPress', this.backHandle);
   }
 
   backHandle = () => {
-    const currentScreen = getActiveRouteName(this.props.router)
+    const currentScreen = getActiveRouteName(this.props.router);
     if (currentScreen === 'Login') {
-      return true
+      return true;
     }
     if (currentScreen !== 'Home') {
-      this.props.dispatch(NavigationActions.back()) // 往后退
-      return true
+      this.props.dispatch(NavigationActions.back()); // 往后退
+      return true;
     }
-    return false
+    return false;
   }
 
   render() {
-    const { app, dispatch, router } = this.props
-    if (app.loading) return <Loading />
+    const { app, dispatch, router } = this.props;
+    if (app.loading) return <Loading />;
 
-    return <App dispatch={dispatch} state={router} />
+    return <App dispatch={dispatch} state={router} />;
   }
 }
 
-export default Router
+export default Router;
