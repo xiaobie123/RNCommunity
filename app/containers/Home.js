@@ -22,11 +22,9 @@ class Home extends Component {
       />
     ),
   }
-
   gotoDetail = () => {
     this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }));
   }
-
   render() {
     return (
       <View style={styles.container}>
