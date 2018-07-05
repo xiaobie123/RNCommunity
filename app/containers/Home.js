@@ -32,14 +32,13 @@ class Home extends Component {
       <View style={styles.container}>
         <ScrollableTabView
           style={styles.container}
-          renderTabBar={() => <ScrollableTabBar style={{ height: 40, borderWidth: 0, elevation: 2 }} tabStyle={{ height: 39 }} />}
+          renderTabBar={() => <ScrollableTabBar style={{ height: 40, borderWidth: 0, elevation: 1 }} tabStyle={{ height: 39 }} />}
           tabBarUnderlineStyle={styles.lineStyle}
           tabBarActiveTextColor="#FF0000"
         >
-          <HomeTab style={styles.textStyle} tabLabel="娱乐" />
-          <Text style={styles.textStyle} tabLabel="科技">科技</Text>
-          <Text style={styles.textStyle} tabLabel="军事">军事</Text>
-          <Text style={styles.textStyle} tabLabel="体育">体育</Text>
+          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="娱乐" />
+          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="科技" />
+          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="军事" />
         </ScrollableTabView>
         {/* <Button text="Goto Detail" onPress={this.gotoDetail} /> */}
       </View>

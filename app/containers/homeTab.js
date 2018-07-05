@@ -6,6 +6,7 @@ import {
   FlatList,
   Button,
   Text,
+  TouchableHighlight,
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
@@ -40,7 +41,7 @@ export default class homeTab extends Component {
             ref={(flatList) => this._flatList = flatList}
             ListHeaderComponent={this._header}
             ListFooterComponent={this._footer}
-            // ItemSeparatorComponent={this._separator}
+            ItemSeparatorComponent={this._separator}
             onRefresh={this.refreshing}
             refreshing={false}
             onEndReachedThreshold={0}
@@ -49,7 +50,6 @@ export default class homeTab extends Component {
             }
             // numColumns={3}
             // columnWrapperStyle={{ borderWidth: 2, borderColor: 'black', paddingLeft: 20 }}
-            // horizontal={false}
             // getItemLayout={(data, index) => (
             //   { length: 100, offset: (100 + 2) * index, index }
             // )}
@@ -64,7 +64,11 @@ export default class homeTab extends Component {
   _renderItem = (item) => {
     const txt = '第' + item.index + '个' + ' title=' + item.item.title;
     const bgColor = item.index % 2 === 0 ? 'red' : 'blue';
-    return <Text style={[{ flex: 1, height: 100, backgroundColor: bgColor }, styles.txt]}>{txt}</Text>;
+    return (
+      <TouchableHighlight onPress={() => { this.props.gotoDetail(); }} style={[{ flex: 1, height: 100, backgroundColor: bgColor }, styles.txt]}>
+        <Text>{txt}</Text>
+      </TouchableHighlight>
+    );
   }
   _header = () => {
     return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是头部</Text>;
@@ -73,7 +77,7 @@ export default class homeTab extends Component {
     return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是尾部</Text>;
   }
   _separator = () => {
-    return <View style={{ height: 2, backgroundColor: 'yellow' }} />;
+    return <View style={{ height: 2, backgroundColor: '#eee' }} />;
   }
 }
 const styles = StyleSheet.create({
@@ -93,13 +97,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderBottomColor: '#ececec',
     borderBottomWidth: 1,
-
   },
   txt: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    color: 'white',
-    fontSize: 30,
+    // textAlignVertical: 'center',
+    // color: 'white',
+    // fontSize: 30,
   },
 
 });
