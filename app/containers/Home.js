@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import Dimensions from 'Dimensions';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
-// import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
-import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-
+import ScrollableTabView, { ScrollableTabBar, DefaultTabBar } from 'react-native-scrollable-tab-view';
 import HomeTab from './homeTab';
-import { Button } from '../components';
 
 import { NavigationActions } from '../utils';
 

@@ -4,8 +4,6 @@ import ActionSheet from 'react-native-actionsheet';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Dimensions from 'Dimensions';
 import { connect } from 'react-redux';
-import { Button } from '../components';
-import { NavigationActions } from '../utils';
 
 const { width, height } = Dimensions.get('window');
 
@@ -21,18 +19,18 @@ class listItem extends Component {
         <TouchableHighlight onPress={() => { this.props.gotoDetail(); }}>
           <Text>fdfdf</Text>
         </TouchableHighlight>
-        <TouchableHighlight onPress={() => { this.props.gotoDetail(); }}>
+        <TouchableHighlight onPress={() => { this.showActionSheet(); }}>
           <Text>fdfdf</Text>
         </TouchableHighlight>
         <View>
           <Text><Icon name="rocket" size={30} color="#900" /></Text>
-          <Text>123</Text>
-          <Text>123</Text>
-          <Text>123</Text>
+          <Text><Icon name="rocket" size={30} color="#900" /></Text>
+          <Text><Icon name="rocket" size={30} color="#900" /></Text>
+          <Text><Icon name="rocket" size={30} color="#900" /></Text>
         </View>
         <ActionSheet
-          title={'Which one do you like ?'}
-          ref={o => this.ActionSheet = o}
+          title="Which one do you like ?"
+          ref={(o) => this.ActionSheet = o}
           options={['Apple', 'Banana', 'cancel']}
           cancelButtonIndex={2}
           destructiveButtonIndex={1}

@@ -8,6 +8,7 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
+import HomeListItem from './homeListItem';
 
 const { width, height } = Dimensions.get('window');
 export default class homeTab extends Component {
@@ -65,9 +66,9 @@ export default class homeTab extends Component {
     const txt = '第' + item.index + '个' + ' title=' + item.item.title;
     const bgColor = item.index % 2 === 0 ? 'red' : 'blue';
     return (
-      <TouchableHighlight onPress={() => { this.props.gotoDetail(); }} style={[{ flex: 1, height: 100, backgroundColor: bgColor }, styles.txt]}>
-        <Text>{txt}</Text>
-      </TouchableHighlight>
+      <View>
+        <HomeListItem gotoDetail={this.props.gotoDetail} />
+      </View>
     );
   }
   _header = () => {
