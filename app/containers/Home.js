@@ -11,7 +11,7 @@ const ScreenWidth = Dimensions.get('window').width;
 @connect()
 class Home extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Home', // 配置标题bar
+    tabBarLabel: '足印', // 配置标题bar
     tabBarIcon: ({ focused, tintColor }) => ( // 底部tab标签的图标
       <Image
         style={[styles.icon, { tintColor: focused ? tintColor : 'gray' }]}
@@ -31,9 +31,9 @@ class Home extends Component {
           tabBarUnderlineStyle={styles.lineStyle}
           tabBarActiveTextColor="#FF0000"
         >
-          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="娱乐" />
-          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="科技" />
-          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="军事" />
+          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="最新" />
+          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="热门" />
+          <HomeTab style={styles.textStyle} gotoDetail={this.gotoDetail} tabLabel="浅记" />
         </ScrollableTabView>
         {/* <Button text="Goto Detail" onPress={this.gotoDetail} /> */}
       </View>
