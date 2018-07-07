@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import ScrollableTabView, { ScrollableTabBar, DefaultTabBar } from 'react-native-scrollable-tab-view';
 import HomeTab from './homeTab';
 
-import { NavigationActions } from '../utils';
+import { NavigationActions } from '../../utils/index';
 
 const ScreenWidth = Dimensions.get('window').width;
 @connect()
@@ -15,7 +15,7 @@ class Home extends Component {
     tabBarIcon: ({ focused, tintColor }) => ( // 底部tab标签的图标
       <Image
         style={[styles.icon, { tintColor: focused ? tintColor : 'gray' }]}
-        source={require('../images/house.png')}
+        source={require('../../images/house.png')}
       />
     ),
   }

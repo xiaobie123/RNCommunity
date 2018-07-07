@@ -4,7 +4,7 @@ import ActionSheet from 'react-native-actionsheet';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Dimensions from 'Dimensions';
 import { connect } from 'react-redux';
-import { Touchable } from '../components';
+import { Touchable } from '../../components/index';
 
 const { width } = Dimensions.get('window');
 
@@ -32,10 +32,10 @@ class listItem extends Component {
         </View>
         <Text onPress={() => { this.props.gotoDetail(); }}>你后门好你们呢噩耗你们豪华房或或或或或或或或或或或或或或或发挥好或或或或</Text>
         <View style={styles.flexRowStart}>
-          <View style={{ width: '40%' }}><Icon style={styles.iconRW} name="eye" size={15} color="#fff"><Text>100</Text></Icon></View>
-          <View style={{ width: '20%' }}><Icon style={styles.iconRW} name="share" size={15} color="#f5f5f5"><Text>分享</Text></Icon></View>
-          <View style={{ width: '20%' }}><Icon style={styles.iconRW} name="comment" size={15} color="#f5f5f5"><Text>100</Text></Icon></View>
-          <View style={{ width: '20%' }}><Icon style={styles.iconRW} name="thumbs-o-up" size={15} color="#f5f5f5"><Text>100</Text></Icon></View>
+          <View style={{ width: '40%' }}><Icon name="eye" size={15} color="#fff"><Text>100</Text></Icon></View>
+          <View style={{ width: '20%' }}><Icon name="share" size={15} color="#f5f5f5"><Text>分享</Text></Icon></View>
+          <View style={{ width: '20%' }}><Icon name="comment" size={15} color="#f5f5f5"><Text>100</Text></Icon></View>
+          <View style={{ width: '20%' }}><Icon name="thumbs-o-up" size={15} color="#f5f5f5"><Text>100</Text></Icon></View>
         </View>
         <ActionSheet
           title="Which one do you like ?"
