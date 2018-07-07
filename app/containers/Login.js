@@ -1,29 +1,29 @@
-import React, { Component } from 'react'
-import { StyleSheet, View, Image, ActivityIndicator } from 'react-native'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { StyleSheet, View, Image, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 
-import { Button, Touchable } from '../components'
+import { Button, Touchable } from '../components';
 
-import { createAction, NavigationActions } from '../utils'
+import { createAction, NavigationActions } from '../utils';
 
 @connect(({ app }) => ({ ...app }))
 class Login extends Component {
   static navigationOptions = {
     title: 'Login',
-  }
+  };
 
- // 登录
+  // 登录
   onLogin = () => {
-    this.props.dispatch(createAction('app/login')())
+    this.props.dispatch(createAction('app/login')());
   }
 
   // 页面关闭按钮
   onClose = () => {
-    this.props.dispatch(NavigationActions.back())
+    this.props.dispatch(NavigationActions.back());
   }
 
   render() {
-    const { fetching } = this.props
+    const { fetching } = this.props;
     return (
       <View style={styles.container}>
         {fetching ? (
@@ -40,7 +40,7 @@ class Login extends Component {
           </Touchable>
         )}
       </View>
-    )
+    );
   }
 }
 
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
     height: 24,
     tintColor: 'gray',
   },
-})
+});
 
-export default Login
+export default Login;

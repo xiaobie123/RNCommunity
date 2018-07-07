@@ -24,7 +24,7 @@ const HomeNavigator = createBottomTabNavigator({
 });
 
 HomeNavigator.navigationOptions = ({ navigation }) => {
-  const { routeName } = navigation.state.routes[navigation.state.index]
+  const { routeName } = navigation.state.routes[navigation.state.index];
   if (routeName === 'Home') {
     return {
       header: null,
@@ -64,7 +64,7 @@ const AppNavigator = createStackNavigator(
         timing: Animated.timing,
       },
       screenInterpolator: (sceneProps) => {
-        const { layout, position, scene } = sceneProps
+        const { layout, position, scene } = sceneProps;
         const { index } = scene;
 
         const height = layout.initHeight;
@@ -97,7 +97,7 @@ function getActiveRouteName(navigationState) {
   if (!navigationState) {
     return null;
   }
-  const route = navigationState.routes[navigationState.index]
+  const route = navigationState.routes[navigationState.index];
   if (route.routes) {
     return getActiveRouteName(route);
   }
