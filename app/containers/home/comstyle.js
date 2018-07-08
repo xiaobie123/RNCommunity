@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native';
 
-const style = StyleSheet.create({
+const style = {
   flexItems: {
     flex: 1,
   },
@@ -22,5 +22,5 @@ const style = StyleSheet.create({
     flex: 1,
     marginRight: 10,
   },
-});
+};
 export default style;

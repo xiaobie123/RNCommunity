@@ -16,7 +16,7 @@ import Loading from './containers/Loading';
 import Login from './containers/Login';
 import Home from './containers/home/Home';
 import Account from './containers/Account';
-import Detail from './containers/home/Detail';
+import Detail from './containers/home/test';
 
 const HomeNavigator = createBottomTabNavigator({
   Home: { screen: Home },
