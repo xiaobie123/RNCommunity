@@ -15,17 +15,20 @@ import { connect } from 'react-redux';
 import Loading from './containers/Loading';
 import Login from './containers/Login';
 import Home from './containers/home/Home';
-import Account from './containers/Account';
 import Detail from './containers/home/test';
+import Account from './containers/Account';
+import MyIndex from './containers/my';
+import MyHomePage from './containers/my/myHomePage';
 
+// 底部tab导航
 const HomeNavigator = createBottomTabNavigator({
   Home: { screen: Home },
-  Account: { screen: Account },
+  Account: { screen: MyIndex },
 });
-
+// 底部taba 导航设置
 HomeNavigator.navigationOptions = ({ navigation }) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
-  if (routeName === 'Home') {
+  if (routeName === 'Home' || routeName === 'Account') {
     return {
       header: null,
     };
@@ -35,11 +38,13 @@ HomeNavigator.navigationOptions = ({ navigation }) => {
     };
   }
 };
-
+// 创建一个导航栈
 const MainNavigator = createStackNavigator(
   {
     HomeNavigator: { screen: HomeNavigator },
     Detail: { screen: Detail },
+    // 我的 相关
+    MyHomePage: { screen: MyHomePage },
   },
   {
     headerMode: 'float',
