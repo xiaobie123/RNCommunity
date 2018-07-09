@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button, Touchable } from '../../components';
 
 import { createAction, NavigationActions } from '../../utils';
