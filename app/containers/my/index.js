@@ -41,8 +41,8 @@ class Account extends Component {
   renderItem = (info) => {
     const txt = info.item.title;
     return (
-      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 10 }}>
-        <Text style={{ height: 60, fontSize: 15 }}>
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 16 }}>
+        <Text style={{ height: 25, fontSize: 15 }}>
           <Icon name="home" size={18} color="#5C5C5C" />
           <Text>{txt}</Text>
         </Text>
