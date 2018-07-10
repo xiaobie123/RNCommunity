@@ -39,14 +39,31 @@ class Account extends Component {
     return <View><Text style={{ height: 2 }} /></View>;
   }
   renderItem = (info) => {
-    const txt = info.item.title;
+    if (info.section.key === 'head') {
+      return (
+        <View style={{ flex: 1, flexDirection: 'row', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 20 }}>
+          <View style={{ flex: 1 }}>
+            <Image
+              style={[styles.header]}
+              source={{ uri: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' }}
+            />
+          </View>
+          <View style={{ flex: 3 }}>
+            <Text style={{ fontSize: 14, marginTop: 15 }}>你美你你媚你魅你妹</Text>
+            <Text style={{ fontSize: 12, marginTop: 3 }}>慵懒~是一种生活态度</Text>
+            <Text style={{ fontSize: 12, marginTop: 3 }}><Text>日记：0</Text>&nbsp;|&nbsp;<Text>浅友：0</Text></Text>
+          </View>
+          <Text style={{ flex: 1, textAlign: 'right', marginTop: 30 }}><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
+        </View>
+      );
+    }
     return (
       <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 16 }}>
         <Text style={{ height: 25, fontSize: 15 }}>
           <Icon name="home" size={18} color="#5C5C5C" />
-          <Text>{txt}</Text>
+          <Text>&nbsp;{info.item.title}</Text>
         </Text>
-        <Text><Icon name="home" size={18} color="#5C5C5C" /></Text>
+        <Text><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
       </View>
     );
   }
@@ -83,8 +100,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   icon: {
-    width: 32,
-    height: 32,
+    width: 30,
+    height: 30,
+  },
+  header: {
+    marginTop: 10,
+    width: 50,
+    height: 50,
   },
 });
 
