@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, Alert, Button } from 'react-native';
+import { StyleSheet, View, Image, SectionList, Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 // import { Button, Touchable } from '../../components';
@@ -13,7 +13,7 @@ class Login extends Component {
     headerRight: (
       <Button
         onPress={() => alert('This is a button!')}
-        title={"保存"}
+        title="保存"
       />
     ),
   };
@@ -28,11 +28,60 @@ class Login extends Component {
   gotoAccount = () => {
     this.props.dispatch(NavigationActions.navigate({ routeName: 'Account' }));
   }
-  render() {
-    const { fetching } = this.props;
+  // 去哪个页面
+  goTo = (routeName) => {
+    this.props.dispatch(NavigationActions.navigate({ routeName }));
+  }
+  renderItem = (info) => {
+    if (info.section.key === 'head') {
+      return (
+        <View style={{ flex: 1, flexDirection: 'row', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 20 }}>
+          <View style={{ flex: 1 }}>
+            <Image
+              style={[styles.header]}
+              source={{ uri: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' }}
+            />
+          </View>
+          <View style={{ flex: 3 }}>
+            <Text style={{ fontSize: 14, marginTop: 15 }}>你美你你媚你魅你妹</Text>
+            <Text style={{ fontSize: 12, marginTop: 3 }}>慵懒~是一种生活态度</Text>
+            <Text style={{ fontSize: 12, marginTop: 3 }}><Text>日记：0</Text>&nbsp;|&nbsp;<Text>浅友：0</Text></Text>
+          </View>
+          <Text onPress={this.goTo.bind(this, info.item.router)} style={{ flex: 1, textAlign: 'right', marginTop: 30 }}><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
+        </View>
+      );
+    }
     return (
-      <View style={styles.container}>
-        <Button text="返回" onPress={this.gotoAccount} />
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 16 }}>
+        <Text style={{ height: 25, fontSize: 15 }}>
+          <Icon name="home" size={18} color="#5C5C5C" />
+          <Text>&nbsp;{info.item.title}</Text>
+        </Text>
+        <Text><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
+      </View>
+    );
+  }
+  render() {
+    const sections = [
+      { key: 'head',
+        data: [{ router: 'MyInformation' }],
+      },
+      { key: 'my',
+        data: [{ icon: 'home', title: '我的主页', router: 'MyHomePage' }, { icon: 'xx', title: '我的消息' }, { icon: 'xx', title: '我的话题' }, { icon: 'xx', title: '我的回收站' }],
+      },
+      { key: 'system', data: [{ icon: 'xx', title: '隐私' }, { icon: 'xx', title: '关于' }] },
+    ];
+    return (
+      <View style={{ flex: 1 }}>
+        <SectionList
+          stickySectionHeadersEnabled={false}
+          renderSectionHeader={this.sectionComp}
+          renderItem={this.renderItem}
+          sections={sections}
+          // ItemSeparatorComponent={() => <View><Text></Text></View>}
+          // ListHeaderComponent={() => <View style={{ backgroundColor: '#25B960', alignItems: 'center', height: 30 }}><Text style={{ fontSize: 18, color: '#ffffff' }}>通讯录</Text></View>}
+          // ListFooterComponent={() => <View style={{ backgroundColor: '#25B960', alignItems: 'center', height: 30 }}><Text style={{ fontSize: 18, color: '#ffffff' }}>通讯录尾部</Text></View>}
+        />
       </View>
     );
   }
@@ -44,15 +93,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  close: {
-    position: 'absolute',
-    right: 10,
-    top: 30,
-  },
   icon: {
-    width: 24,
-    height: 24,
-    tintColor: 'gray',
+    width: 30,
+    height: 30,
+  },
+  header: {
+    marginTop: 10,
+    width: 50,
+    height: 50,
   },
 });
 
