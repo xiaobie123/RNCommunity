@@ -12,6 +12,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from '../../components';
 
 import { createAction, NavigationActions } from '../../utils';
+import MyHomePage from "./myHomePage";
 
 @connect(({ app }) => ({ ...app }))
 class Account extends Component {
@@ -29,6 +30,10 @@ class Account extends Component {
   }
   gotomyhomepage = () => {
     this.props.dispatch(NavigationActions.navigate({ routeName: 'MyHomePage' }));
+  }
+  // 去哪个页面
+  goTo = (routeName) => {
+    this.props.dispatch(NavigationActions.navigate({ routeName }));
   }
   logout = () => {
     this.props.dispatch(createAction('app/logout')());
@@ -53,7 +58,7 @@ class Account extends Component {
             <Text style={{ fontSize: 12, marginTop: 3 }}>慵懒~是一种生活态度</Text>
             <Text style={{ fontSize: 12, marginTop: 3 }}><Text>日记：0</Text>&nbsp;|&nbsp;<Text>浅友：0</Text></Text>
           </View>
-          <Text style={{ flex: 1, textAlign: 'right', marginTop: 30 }}><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
+          <Text onPress={this.goTo.bind(this, info.item.router)} style={{ flex: 1, textAlign: 'right', marginTop: 30 }}><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
         </View>
       );
     }
@@ -70,10 +75,10 @@ class Account extends Component {
   render() {
     const sections = [
       { key: 'head',
-        data: [{ icon: 'xx', title: '我的主页' }],
+        data: [{ router: 'MyInformation' }],
       },
       { key: 'my',
-        data: [{ icon: 'home', title: '我的主页' }, { icon: 'xx', title: '我的消息' }, { icon: 'xx', title: '我的话题' }, { icon: 'xx', title: '我的回收站' }],
+        data: [{ icon: 'home', title: '我的主页', router: 'MyHomePage' }, { icon: 'xx', title: '我的消息' }, { icon: 'xx', title: '我的话题' }, { icon: 'xx', title: '我的回收站' }],
       },
       { key: 'system', data: [{ icon: 'xx', title: '隐私' }, { icon: 'xx', title: '关于' }] },
     ];

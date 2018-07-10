@@ -19,6 +19,7 @@ import Detail from './containers/home/test';
 import Account from './containers/Account';
 import MyIndex from './containers/my';
 import MyHomePage from './containers/my/myHomePage';
+import MyInformation from './containers/my/myInformation';
 
 // 底部tab导航
 const HomeNavigator = createBottomTabNavigator({
@@ -38,26 +39,28 @@ HomeNavigator.navigationOptions = ({ navigation }) => {
     };
   }
 };
-// 创建一个导航栈
+// 创建一个导航栈 （从右边进入）
 const MainNavigator = createStackNavigator(
   {
     HomeNavigator: { screen: HomeNavigator },
     Detail: { screen: Detail },
-    // 我的 相关
-    MyHomePage: { screen: MyHomePage },
   },
   {
     headerMode: 'float',
   }
 );
-
+// 创建一个导航栈 （从下往上进入）
 const AppNavigator = createStackNavigator(
   {
     Main: { screen: MainNavigator },
     Login: { screen: Login },
+    // 我的 相关
+    MyHomePage: { screen: MyHomePage },
+    MyInformation: { screen: MyInformation },
   },
   {
-    headerMode: 'none', // headerMode - 指定如何呈现标题：
+    // headerMode: 'none', // headerMode - 指定如何呈现标题
+    headerMode: 'float',
     mode: 'modal', // 定义渲染和转换的样式  modal - 使屏幕从底部滑入，这是一种常见的iOS模式。仅适用于iOS，对Android没有影响。
     navigationOptions: {
       gesturesEnabled: false,
