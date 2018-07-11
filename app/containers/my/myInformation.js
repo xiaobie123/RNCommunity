@@ -42,12 +42,6 @@ class Login extends Component {
               source={{ uri: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' }}
             />
           </View>
-          <View style={{ flex: 3 }}>
-            <Text style={{ fontSize: 14, marginTop: 15 }}>你美你你媚你魅你妹</Text>
-            <Text style={{ fontSize: 12, marginTop: 3 }}>慵懒~是一种生活态度</Text>
-            <Text style={{ fontSize: 12, marginTop: 3 }}><Text>日记：0</Text>&nbsp;|&nbsp;<Text>浅友：0</Text></Text>
-          </View>
-          <Text onPress={this.goTo.bind(this, info.item.router)} style={{ flex: 1, textAlign: 'right', marginTop: 30 }}><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
         </View>
       );
     }
