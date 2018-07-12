@@ -36,7 +36,7 @@ class Login extends Component {
     if (info.section.key === 'head') {
       return (
         <View style={{ flex: 1, flexDirection: 'row', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 20 }}>
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
             <Image
               style={[styles.header]}
               source={{ uri: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' }}
@@ -48,7 +48,6 @@ class Login extends Component {
     return (
       <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#ffffff', color: '#5C5C5C', padding: 16 }}>
         <Text style={{ height: 25, fontSize: 15 }}>
-          <Icon name="home" size={18} color="#5C5C5C" />
           <Text>&nbsp;{info.item.title}</Text>
         </Text>
         <Text><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
@@ -61,9 +60,17 @@ class Login extends Component {
         data: [{ router: 'MyInformation' }],
       },
       { key: 'my',
-        data: [{ icon: 'home', title: '我的主页', router: 'MyHomePage' }, { icon: 'xx', title: '我的消息' }, { icon: 'xx', title: '我的话题' }, { icon: 'xx', title: '我的回收站' }],
+        data: [
+          { icon: 'home', title: '昵称', router: 'MyHomePage' },
+          { icon: 'xx', title: '性别' },
+          { icon: 'xx', title: '签名' },
+          { icon: 'xx', title: '生日' },
+          { icon: 'xx', title: '星座' },
+          { icon: 'xx', title: '所在地' },
+          { icon: 'xx', title: '职业' },
+          { icon: 'xx', title: '个性标签' },
+        ],
       },
-      { key: 'system', data: [{ icon: 'xx', title: '隐私' }, { icon: 'xx', title: '关于' }] },
     ];
     return (
       <View style={{ flex: 1 }}>
