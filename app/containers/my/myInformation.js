@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image, SectionList, Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-// import { Button, Touchable } from '../../components';
+import MyBottomSheet from '../../components/myBottomSheet';
 
 import { createAction, NavigationActions } from '../../utils';
 
@@ -50,7 +50,7 @@ class Login extends Component {
         <Text style={{ height: 25, fontSize: 15 }}>
           <Text>&nbsp;{info.item.title}</Text>
         </Text>
-        <Text><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
+        <Text onPress={() => { this.Sheet.showModal(); }}><Icon name="chevron-right" size={15} color="#5C5C5C" /></Text>
       </View>
     );
   }
@@ -72,6 +72,9 @@ class Login extends Component {
         ],
       },
     ];
+    const a = [
+      { title: '性别' },
+    ];
     return (
       <View style={{ flex: 1 }}>
         <SectionList
@@ -83,6 +86,7 @@ class Login extends Component {
           // ListHeaderComponent={() => <View style={{ backgroundColor: '#25B960', alignItems: 'center', height: 30 }}><Text style={{ fontSize: 18, color: '#ffffff' }}>通讯录</Text></View>}
           // ListFooterComponent={() => <View style={{ backgroundColor: '#25B960', alignItems: 'center', height: 30 }}><Text style={{ fontSize: 18, color: '#ffffff' }}>通讯录尾部</Text></View>}
         />
+        <MyBottomSheet items={a} ref={(e) => { this.Sheet = e; }} />
       </View>
     );
   }
