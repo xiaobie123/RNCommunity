@@ -43,8 +43,16 @@ class Account extends Component {
         >
           <View style={{ marginTop: 22 }}>
             <View>
-              <Text>Hello World!</Text>
-
+              <View style={{
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+                <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
+                <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
+                <View style={{width: 50, height: 50, backgroundColor: 'steelblue'}} />
+              </View>
               <TouchableHighlight onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
               }}>

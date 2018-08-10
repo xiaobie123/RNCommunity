@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  flexRowStart: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    textAlign: 'left',
-  },
+  // flexRowStart: {
+  //   flex: 1,
+  //   flexDirection: 'row',
+  //   justifyContent: 'flex-start',
+  //   textAlign: 'left',
+  // },
   iconRW: {
     flex: 1,
     marginRight: 10,

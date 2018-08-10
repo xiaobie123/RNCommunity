@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    textAlign: 'left',
+    // textAlign: 'left',
   },
   iconRW: {
     flex: 1,

@@ -30,13 +30,14 @@ export default class homeTab extends Component {
   }
   render() {
     var data = [];
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 20; i++) {
       data.push({key: i, title: i + ''});
     }
 
     return (
       <View style={{ flex: 1 }}>
-        <Button title="滚动到指定位置" onPress={() => { this._flatList.scrollToOffset({ animated: true, offset: 2000 }); }} />
+        {/* <Button title="滚动到指定位置" onPress={() => { this._flatList.scrollToOffset({ animated: true, offset: 2000 }); }} /> */}
+        <View style={{ backgroundColor: '#e8e8e8', height: 1 }} />
         <View style={{ flex: 1 }}>
           <FlatList
             ref={(flatList) => this._flatList = flatList}
@@ -63,8 +64,6 @@ export default class homeTab extends Component {
     );
   }
   _renderItem = (item) => {
-    const txt = '第' + item.index + '个' + ' title=' + item.item.title;
-    const bgColor = item.index % 2 === 0 ? 'red' : 'blue';
     return (
       <View>
         <HomeListItem gotoDetail={this.props.gotoDetail} />
@@ -72,10 +71,10 @@ export default class homeTab extends Component {
     );
   }
   _header = () => {
-    return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是头部</Text>;
+    return <View style={{ backgroundColor: '#e8e8e8', height: 0 }} />;
   }
   _footer = () => {
-    return <Text style={[styles.txt, { backgroundColor: 'black' }]}>这是尾部</Text>;
+    return <View style={[styles.txt, { backgroundColor: '#e8e8e8' }]} />;
   }
   _separator = () => {
     return <View style={{ height: 2, backgroundColor: '#eee' }} />;
