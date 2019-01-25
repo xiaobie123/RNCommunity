@@ -33,7 +33,6 @@ export default class homeTab extends Component {
     for (var i = 0; i < 20; i++) {
       data.push({key: i, title: i + ''});
     }
-
     return (
       <View style={{ flex: 1 }}>
         {/* <Button title="滚动到指定位置" onPress={() => { this._flatList.scrollToOffset({ animated: true, offset: 2000 }); }} /> */}
