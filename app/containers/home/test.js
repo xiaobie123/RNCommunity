@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // flexDirection: 'row',
     // alignItems: 'flex-start',
-    padding: '0% 1% 3%',
+    // padding: '0% 1% 3%',
   },
   body: {
     flex: 1,
